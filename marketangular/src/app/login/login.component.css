@@ -1,0 +1,40 @@
+.ng-invalid { 
+    
+    }
+.ng-valid { 
+    
+    }
+.ng-untouched { 
+    
+    }
+.ng-touched {
+    
+     }
+.ng-dirty { 
+    
+    }
+.ng-pristine {
+    
+    }
+
+.box {
+        border-style: solid;
+    }
+    
+input {
+        /* display: block; */
+    }
+    
+form {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+div {
+        padding: 5px;
+        margin: 5px;
+    }
+.inline {
+    display: inline-block;
+    vertical-align: top
+}
