@@ -34,9 +34,9 @@ module.exports = {
 
     showall: function (req, res) {
        
-        Product.find({}) .populate('User') 
-        .execu(function(err, data) {
-            
+        Product.find({}) 
+        .populate('User') 
+        .execut(function(err, data) {
             if(err) {
                 return res.json(err);
             }

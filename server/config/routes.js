@@ -7,8 +7,8 @@ var path = require('path');
 module.exports = function(app) {
 
     app.post('/user', usercontroller.create);
-    app.get('/email', usercontroller.findEmail);
-    app.get('/user', usercontroller.login);
+    // app.get('/email', usercontroller.findEmail);
+    app.post('/userlogin', usercontroller.login);
 
     app.post('/product', productcontroller.create);
     app.get('/product/:id', productcontroller.showmine);
