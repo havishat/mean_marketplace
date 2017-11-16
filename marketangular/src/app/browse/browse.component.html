@@ -11,13 +11,13 @@
           image {{camera.image}} 
       </div>
       <div class="inline">
-          title {{camera.title}} 
+          <h3>{{camera.title}} </h3>
 
-          description {{description}} 
+          {{camera.description}} 
       </div>
       <div class="inline">
-          price: $ {{camera.price}}
-          location {{camera.location}}
+          price: $ {{camera.price}} <br>
+          location: {{camera.location}}
           <input *ngIf = "camera._creator != loggedUserID" (click)='Contact(camera._creator, camera._creator.firstName, camera)' type="submit" value="Contact">
           <button *ngIf = "camera._creator == loggedUserID" (click)="delete(camera._id)" type="button">DELETE</button>          
       </div>
