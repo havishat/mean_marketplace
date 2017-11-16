@@ -12,29 +12,41 @@ import { Cameramarket } from './../cameramarket'
 export class BrowseComponent implements OnInit {
 
   private products;
+  user = new User();
+  camera = new Cameramarket();
+  loggedUserID 
+  email
 
   constructor(private _taskservice: TaskService, private _router: Router) { }
 
   ngOnInit() {
-    this.displayallproduct()
+    if(!this._taskservice.getID()){
+      this._router.navigate(['']);
+    } else {
+      this.showall()
+    }
+    
   }
 
-  displayallproduct() {
-    this._taskservice.displayallproduct((data) => {
-      this.products = data;
+  showall() {
+    this.loggedUserID = this._taskservice.getID();
+    this._taskservice.showall((data) =>  {
+      this.products = data
       console.log("products", this.products)
+    })
+  
+  }
+
+  delete(id, index){
+    console.log("delete" )
+    this._taskservice.delete(id, deletedata => { 
+      this.products.splice(index,1);
+
     })
   }
 
-  Logoff() {
-    this._router.navigate(['/'])
+  Contact(id, name, camera) {
+    alert("Name:" + name)
   }
 
-  Contact() {
-    this._router.navigate(['/listings'])
-  }
-
-  Delete() {
-    this._router.navigate(['/browse'])
-  }
 }

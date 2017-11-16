@@ -3,5 +3,11 @@
     <h1>
       Camera Marketplace
     </h1>
+  
+  <div *ngIf = 'loggedUserID'>
+    <a [routerLink] = "['browse']">Browse </a> |
+    <a [routerLink] = "['listings']">My Listings </a> | 
+    <a [routerLink] = "['/']" (click)='resetID()'>Log out</a>  
   </div>
-<router-outlet></router-outlet>
+</div>
+<router-outlet (activate)="updateID()"></router-outlet>

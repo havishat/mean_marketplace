@@ -4,23 +4,22 @@
   <title>Bicycle Marketplace</title>
 </head>
 <body>  
-  <a href="/browse">Browse </a> | <a href="/listings">My Listings </a> | 
-  <input (click)='Logoff()' type="submit" value="logoff">
-  <fieldset>
+  
+  <fieldset *ngFor = "let camera of products">
     <div >
       <div class="inline">
-          image {{image}} 
+          image {{camera.image}} 
       </div>
       <div class="inline">
-          title {{title}} 
+          title {{camera.title}} 
 
           description {{description}} 
       </div>
       <div class="inline">
-          price {{price}}
-          location {{location}}
-          <input (click)='Contact()' type="submit" value="Contact">
-          <input (click)='Delete()' type="submit" value="Delete">             
+          price: $ {{camera.price}}
+          location {{camera.location}}
+          <input *ngIf = "camera._creator != loggedUserID" (click)='Contact(camera._creator, camera._creator.firstName, camera)' type="submit" value="Contact">
+          <button *ngIf = "camera._creator == loggedUserID" (click)="delete(camera._id)" type="button">DELETE</button>          
       </div>
     </div>
   </fieldset>

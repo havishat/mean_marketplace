@@ -23,7 +23,7 @@ module.exports = {
     },
 
     showmine: function (req, res) {
-        Product.findOne({_creator: req.params, id}, function (err, data) {
+        Product.find({_creator: req.params.id}, function (err, data) {
             if(err) {
                 return res.json(err);
             } 
@@ -36,7 +36,7 @@ module.exports = {
        
         Product.find({}) 
         .populate('User') 
-        .execut(function(err, data) {
+        .exec(function(err, data) {
             if(err) {
                 return res.json(err);
             }

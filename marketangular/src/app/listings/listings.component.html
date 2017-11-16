@@ -4,9 +4,7 @@
   <title>Bicycle Marketplace</title>
 </head>
 <body>  
-    <a href="/browse">Browse </a> | <a href="/listings">My Listings </a> | <a href="/">Log Off</a>
-     <br>   
-     <br>
+   
     <fieldset>
     <h1>Create Listing</h1>
     <form (submit)="Create()" #createformData='ngForm'>
@@ -58,29 +56,24 @@
         <span *ngIf=(createlocation.errors) [ngStyle]="{'color': 'red'}"> Give me valid location</span>
         <span *ngIf=(createlocation.errors) [ngStyle]="{'color': 'red'}"> {{ createlocation.errors | json }}</span>
         <br>
-        image: <input 
-        type="text" 
+        <!-- image: <input 
+        type= "file"
         name="image" 
-        required 
-        minlength="1" 
         [(ngModel)]="camera.image"
-        #createimage='ngModel'
-    />
-        <span *ngIf=(createimage.errors) [ngStyle]="{'color': 'red'}"> Give me valid image</span>
-        <span *ngIf=(createimage.errors) [ngStyle]="{'color': 'red'}"> {{ createimage.errors | json }}</span>
-        <br>
+    /> -->
         <input class='green' [disabled]='createformData.invalid' type="submit" value="Create">
         </form>
     </fieldset>
     <br>
-    <fieldset>
+    <fieldset *ngFor = "let camera of myproduct">
         <h1>Edit/Delete Listings</h1>
-        <form (submit)="Update()" #formData='ngForm'>
+        <form #formData='ngForm'>
             Title: <input 
             type="text" 
             name="title" 
             required 
             minlength="3" 
+            [(ngModel)]="camera.title"
             />
             <br>
             Description: <input 
@@ -89,6 +82,7 @@
             required 
             minlength="3" 
             maxlength="200"
+            [(ngModel)]="camera.description"
             />
             <br>
             <br>
@@ -97,6 +91,7 @@
             name="price" 
             required 
             minlength="1" 
+            [(ngModel)]="camera.price"
             />
             <br>
             Location: <input 
@@ -104,11 +99,11 @@
             name="location" 
             required 
             minlength="1" 
-           
+            [(ngModel)]="camera.location"
             />
             <br>
-            <input  type="submit" value="UPDATE">
-            <input  type="submit" value="DELETE">
+            <button (click)="update(camera._id, camera)" type="button">UPDATE</button>
+            <button (click)="delete(camera._id)"type="button">DELETE</button>
         </form>
     </fieldset>
   
