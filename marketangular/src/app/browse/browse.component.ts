@@ -31,6 +31,7 @@ export class BrowseComponent implements OnInit {
 
   showall() {
     this.loggedUserID = this._taskservice.getID();
+    console.log("user id", this.loggedUserID)
     this._taskservice.showall((data) =>  {
       this.products = data
       console.log("products", this.products)

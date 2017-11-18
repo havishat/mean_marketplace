@@ -59,7 +59,7 @@ export class TaskService {
     }
 
     create(cameraObject, nav) {
-   
+        cameraObject._creator = this.loggedUserID
         this._http.post('/product', cameraObject).subscribe(
           (response) => {
             if(response.json()) {

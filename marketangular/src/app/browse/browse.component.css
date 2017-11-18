@@ -4,6 +4,15 @@
     vertical-align: top;
 }
 
+.firstdiv{
+    background-color: lightgray;
+    padding: 3%
+}
+
+.seconddiv {
+    background-color: white;
+}
+
 #red {
     background-color: red;
 }
@@ -11,3 +20,4 @@
 #yellow {
     background-color: yellow;
 }
+

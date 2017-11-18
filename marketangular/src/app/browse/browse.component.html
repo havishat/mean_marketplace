@@ -4,24 +4,27 @@
   <title>Bicycle Marketplace</title>
 </head>
 <body>  
-  
-  <fieldset *ngFor = "let camera of products">
-    <div >
-      <div class="inline">
+  <div class=firstdiv>
+    Search: <input [(ngModel)]="searchText" placeholder="search for camera brand name">
+    <fieldset *ngFor = "let camera of products | filter : searchText">
+      <div class=seconddiv>
+        <div class="inline">
           image {{camera.image}} 
-      </div>
-      <div class="inline">
+        </div>
+        <div class="inline">
           <h3>{{camera.title}} </h3>
-
           {{camera.description}} 
-      </div>
-      <div class="inline">
+        </div>
+        <div class="inline">
           price: $ {{camera.price}} <br>
           location: {{camera.location}}
-          <input *ngIf = "camera._creator != loggedUserID" (click)='Contact(camera._creator.email, camera._creator.firstName)' type="submit" value="Contact">
-          <button *ngIf = "camera._creator == loggedUserID" (click)="delete(camera._id)" type="button">DELETE</button>          
+          <div>
+            <input id="yellow" *ngIf = "camera._creator._id != loggedUserID" (click)='Contact(camera._creator.email, camera._creator.firstName)' type="submit" value="Contact">
+            <button  id="red" *ngIf = "camera._creator._id == loggedUserID" (click)="delete(camera._id)" type="button">DELETE</button>          
+          </div>
+        </div>
       </div>
-    </div>
-  </fieldset>
+    </fieldset>
+  </div>
 </body>
 </html>

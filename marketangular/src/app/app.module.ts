@@ -12,13 +12,15 @@ import { BrowseComponent } from './browse/browse.component';
 import { ListingsComponent } from './listings/listings.component';
 
 import { TaskService } from './task.service';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     BrowseComponent,
-    ListingsComponent
+    ListingsComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

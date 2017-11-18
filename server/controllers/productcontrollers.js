@@ -5,8 +5,6 @@ var User = mongoose.model('User');
 module.exports = {
     create: function (req, res) {
         var product = new Product(req.body); 
-            product.email = req.body.email
-            product.name = req.body.firstName
         product.save(function (err, data) {
             console.log("created", data)
             if(err) {

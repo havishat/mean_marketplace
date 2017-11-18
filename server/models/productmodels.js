@@ -8,8 +8,6 @@ var ProductSchema = new Schema ({
     location: {type: String, required: [true, "location missing"], minlength: 5}, 
     // image: {type: String, required: [true, "image missing"]},
     _creator: {type: Schema.Types.String, ref: "User"},
-    email: {type: Schema.Types.String, ref: "User"},
-    name: {type: Schema.Types.String, ref: "User"},
 }, {timestamps: true})  
 
 mongoose.model('Product', ProductSchema);
