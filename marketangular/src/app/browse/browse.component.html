@@ -18,7 +18,7 @@
       <div class="inline">
           price: $ {{camera.price}} <br>
           location: {{camera.location}}
-          <input *ngIf = "camera._creator != loggedUserID" (click)='Contact(camera._creator, camera._creator.firstName, camera)' type="submit" value="Contact">
+          <input *ngIf = "camera._creator != loggedUserID" (click)='Contact(camera._creator.email, camera._creator.firstName)' type="submit" value="Contact">
           <button *ngIf = "camera._creator == loggedUserID" (click)="delete(camera._id)" type="button">DELETE</button>          
       </div>
     </div>

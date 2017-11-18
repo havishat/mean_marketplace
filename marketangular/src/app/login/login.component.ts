@@ -18,12 +18,12 @@ export class LoginComponent implements OnInit {
 
   user = new User();
   // alert = false
- 
+  product
 
   constructor(private _taskservice: TaskService, private _router: Router) { }
 
   ngOnInit() {
-   
+   this.random()
   }
 
   Login() {
@@ -46,6 +46,14 @@ export class LoginComponent implements OnInit {
     
     })
     
+  }
+
+  random() {
+    this._taskservice.showrandom( random => {
+      this.product = random
+      console.log("product random", this.product)
+      
+    })
   }
 
 }

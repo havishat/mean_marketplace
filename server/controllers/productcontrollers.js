@@ -1,15 +1,19 @@
 var mongoose = require('mongoose');
 var Product = mongoose.model('Product');
+var User = mongoose.model('User');
 
 module.exports = {
     create: function (req, res) {
         var product = new Product(req.body); 
-        // product.creator = req.body.creator
+            product.email = req.body.email
+            product.name = req.body.firstName
         product.save(function (err, data) {
+            console.log("created", data)
             if(err) {
                 return res.json(err);
             }
             res.json(data)
+          
         })
     },
 
@@ -28,6 +32,7 @@ module.exports = {
                 return res.json(err);
             } 
             res.json(data);
+            console.log("all product" , data)
 
         })
     },
@@ -35,7 +40,7 @@ module.exports = {
     showall: function (req, res) {
        
         Product.find({}) 
-        .populate('User') 
+        .populate('_creator') 
         .exec(function(err, data) {
             if(err) {
                 return res.json(err);
@@ -51,6 +56,16 @@ module.exports = {
             }
             res.json(data);
         })
+    },
+
+    random: function(req, res) {
+        Product.aggregate(
+            { $sample: { size: 1 } }, function (err, data) {
+                if(err) {
+                    return res.json(err);
+                }
+                res.json(data);
+            })
     }
   
 

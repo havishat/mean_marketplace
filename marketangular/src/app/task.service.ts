@@ -59,9 +59,7 @@ export class TaskService {
     }
 
     create(cameraObject, nav) {
-      cameraObject._creator = this.loggedUserinfo
-      // cameraObject.email = this.email
-      // cameraObject.name = this.name
+   
         this._http.post('/product', cameraObject).subscribe(
           (response) => {
             if(response.json()) {
@@ -75,6 +73,15 @@ export class TaskService {
 
     }
 
+
+    showrandom(callback) {
+      this._http.get(`/products/random`).subscribe(
+        (response) => {
+          callback(response.json())
+          console.log("random", response.json())
+        }
+      )
+    }
 
     showall(callback) {
       this._http.get(`/products`).subscribe(

@@ -16,6 +16,7 @@ export class BrowseComponent implements OnInit {
   camera = new Cameramarket();
   loggedUserID 
   email
+  name
 
   constructor(private _taskservice: TaskService, private _router: Router) { }
 
@@ -45,8 +46,8 @@ export class BrowseComponent implements OnInit {
     })
   }
 
-  Contact(id, name, camera) {
-    alert("Name:" + name)
+  Contact(email, firstName) {
+    alert("Name:" + firstName  + "email:" + email )
   }
 
 }

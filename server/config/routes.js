@@ -13,6 +13,7 @@ module.exports = function(app) {
     app.post('/product', productcontroller.create);
     app.get('/product/:id', productcontroller.showmine);
     app.get('/products', productcontroller.showall);
+    app.get('/products/random', productcontroller.random);
     app.put('/product/:id', productcontroller.update);
 
     app.delete('/product/:id', productcontroller.delete)
